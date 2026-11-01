@@ -1,4 +1,4 @@
-const API_URL = "https://your-backend-url.onrender.com";
+const API_URL = "https://contact-management-system-4.onrender.com";
 
 // DOM elements
 const contactsBody = document.getElementById("contactsBody");
