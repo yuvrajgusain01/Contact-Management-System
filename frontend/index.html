@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">♟</div>
+      <span>Contact Management<br />System</span>
+    </div>
+    <nav>
+      <a class="nav-link active" href="#contacts">
+        <span class="nav-icon">♟</span>Contacts
+      </a>
+      <a class="nav-link" href="#add-contact" id="addNav">
+        <span class="nav-icon plus">＋</span>Add Contact
+      </a>
+      <a class="nav-link" href="#about">
+        <span class="nav-icon info">●</span>About
+      </a>
+    </nav>
+    <div class="sidebar-bottom">CONTACT MANAGER</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand">Contact Management System</div>
+      <div class="admin">
+        <span class="avatar">♟</span>
+        <span>admin</span>
+        <span class="chevron">⌄</span>
+      </div>
+    </header>
+
+    <section class="content" id="contacts">
+      <div class="page-heading">
+        <div>
+          <h1>Contacts</h1>
+          <p>Manage your contacts easily. Add, edit, or delete contact information.</p>
+        </div>
+        <button class="primary add-top" id="showFormBtn">
+          <span class="button-plus">＋</span> Add New Contact
+        </button>
+      </div>
+
+      <section class="panel table-panel">
+        <div class="table-tools">
+          <label class="search-box">
+            <span class="search-icon">⌕</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search by name, email, phone or address..."
+            />
+          </label>
+          <span class="api-status" id="apiStatus">Connecting…</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="id-col">ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th class="actions-col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contactsBody">
+              <tr>
+                <td colspan="6" class="empty">Loading contacts…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <span id="countText">Showing 0 contacts</span>
+          <div class="pagination">
+            <button disabled aria-label="Previous page">‹</button>
+            <button class="page-current">1</button>
+            <button disabled aria-label="Next page">›</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel form-panel" id="add-contact">
+        <div class="form-heading">
+          <h2 id="formTitle">Add New Contact</h2>
+          <span class="required-note"><span>*</span> Required fields</span>
+        </div>
+
+        <form id="contactForm">
+          <div class="form-grid">
+            <label>
+              Name <span>*</span>
+              <input
+                id="contactName"
+                name="contactName"
+                placeholder="Enter full name"
+                required
+                minlength="3"
+                maxlength="20"
+              />
+            </label>
+
+            <label>
+              Email <span>*</span>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter email address"
+                required
+              />
+            </label>
+
+            <label>
+              Phone <span>*</span>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="Enter 10-digit phone number"
+                pattern="[0-9]{10}"
+                required
+              />
+            </label>
+
+            <label>
+              Address
+              <input
+                id="address"
+                name="address"
+                placeholder="Enter address (optional)"
+                minlength="5"
+                maxlength="100"
+              />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary save-btn" type="submit">
+              <span class="save-icon">▣</span>
+              <span id="submitText">Save Contact</span>
+            </button>
+            <button class="secondary" type="button" id="cancelBtn">Cancel</button>
+          </div>
+
+          <p class="message" id="formMessage" role="status"></p>
+        </form>
+      </section>
+
+      <footer id="about">
+        Contact Management System
+        <span>•</span>
+        Manage your contacts in one place
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

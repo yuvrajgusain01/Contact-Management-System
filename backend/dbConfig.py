@@ -10,4 +10,4 @@ db_url=URL.create(
     database='ContactManagementSystem'
 )
 engine=create_engine(db_url)
-session=sessionmaker(AutoFlush=False,AutoCommit=False,bind=engine)
+session=sessionmaker(bind=engine,autoflush=False,autocommit=False)
