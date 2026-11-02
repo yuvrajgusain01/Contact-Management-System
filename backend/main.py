@@ -9,7 +9,6 @@ from dbConfig import session, engine
 
 app = FastAPI()
 
-#
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://contact-management-system-frontend-ruby.vercel.app"],
