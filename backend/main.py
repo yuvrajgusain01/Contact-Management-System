@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from pydanticModel import Details
@@ -79,7 +80,11 @@ def delete_contact(contact_id: int,db: Session = Depends(get_db)):
 
     db.delete(db_contact)
     db.commit()
-
+    if db.query(databaseModel.Contact).count() == 0:
+        db.execute(text(
+            "SELECT setval(pg_get_serial_sequence('contact', 'contactId'), 1, false)"
+        ))
+        db.commit()
     return {
         "message": "Contact deleted successfully"
     }
